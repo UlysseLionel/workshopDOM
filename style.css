@@ -37,6 +37,7 @@ button {
   -webkit-box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
   -moz-box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
   border-radius: 5px;
+  border: 1px solid black;
 }
 main {
   background-color: var(--card-bg);
@@ -122,4 +123,12 @@ img {
 }
 .hearted {
   background-color: var(--pink-heart);
+  color: orange;
+}
+#total {
+  display: flex;
+  justify-content: space-between;
+}
+#total button {
+  padding: 0.5rem 1rem;
 }
