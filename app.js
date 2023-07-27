@@ -3,7 +3,7 @@ let cardItems = [
      title: 'pink pair of sneakers',
      img: './images/img1.avif',
      price: 40,
-     quantity: 2,
+     quantity: 1,
      size: 's',
      color: "pink",
      loved: true,
@@ -12,21 +12,23 @@ let cardItems = [
      title: 'orange pair of sneakers',
      img: './images/img2.avif',
      price: 45,
-     quantity: 3,
+     quantity: 1,
      size: 'Xl',
      color: "orange",
      loved: false,
   },
   {
-     title: 'white pair of sneakers',
-     img: './images/img3.jpg',
-     price: 50,
-     quantity: 4,
-     size: 'L',
-     color: "orange",
-     loved: false,
-  },
+    title: 'white pair of sneakers',
+    img: './images/img3.jpg',
+    price: 50,
+    quantity: 1,
+    size: 'L',
+    color: "white",
+    loved: false,
+ },
 ];
+
+
 const cardWrapper = document.querySelector("#cardWrapper");
 console.log(cardWrapper);
 const total = document.querySelector(".total-quantity");
@@ -54,7 +56,7 @@ div.innerHTML=`<div>
       <path d="M5 12l14 0"></path>
     </svg>
   </button>
-  <input class="quantity-value" type="text" min="1" value="5" />
+  <input class="quantity-value" type="text" min="1" value="1" />
   <button class="shadow-btn increment">
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +82,7 @@ div.innerHTML=`<div>
 <div>
   <div>
     <h6>price</h6>
-    <span>40 $</span>
+    <span>${v.price} $</span>
   </div>
   <div>
     <h6>sub Total</h6>
@@ -143,11 +145,14 @@ cardWrapper.appendChild(div);
 cardItems.forEach(fnAdd);
 total.innerHTML = 0;  
 totalPrice.innerHTML = 0;
+
 function initialValues(v) {
-console.log(v);
+
+
 total.innerHTML = parseInt(total.innerHTML) + v.quantity;
 totalPrice.innerHTML = parseInt(totalPrice.innerHTML) + v.quantity * v.price;
 }
+
 cardItems.forEach(initialValues);
 const inc = document.querySelectorAll(".increment");
 const dec = document.querySelectorAll(".decrement");
@@ -155,12 +160,10 @@ const inputs =document.querySelectorAll("input");
 console.log(inc, inputs);
 const subTotal = document.querySelectorAll(".sub-total");
 function subTotalFn(val, i){
-console.log(subTotal[i]);
-subTotal[i].innerHTML = val * cardItems[i]. price;
-return val * cardItems[i]. price;
+subTotal[i].innerHTML = val * cardItems[i].price;
+return val * cardItems[i].price;
 }
-inc.forEach(
-function(v, i){
+inc.forEach(function(v, i){
   v.addEventListener("click", function (e) {
     e.preventDefault();
     inputs[i].value++; 
@@ -198,7 +201,7 @@ v.addEventListener("click", function (e){
   total.innerHTML = total.innerHTML - inputs[i].value;
   //console.log(total);
   totalPrice.innerHTML =
-   totalPrice.innerHTML - subTotalFn(inputs[i].value, i);
+  totalPrice.innerHTML - subTotalFn(inputs[i].value, i);
   if (total.innerHTML == 0) {
     main.innerHTML = "<h1>your Cart is empty</h1>";
   }
